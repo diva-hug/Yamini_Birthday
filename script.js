@@ -3,42 +3,37 @@ const app = document.getElementById("app");
 
 const memories = [
     {
-        image: "assets/baby/baby1.jpg",
+        image: "baby 1.jpeg",
         title: "ఒక అందమైన ఆరంభం ❤️",
         caption: "నీ చిన్ననాటి మధుర జ్ఞాపకం"
     },
     {
-        image: "assets/baby/baby2.jpg",
+        image: "baby 2.jpeg",
         title: "నా చిన్నారి పాప ❤️",
         caption: "నీ నవ్వే మా ఆనందం"
     },
     {
-        image: "assets/grandpa/grandpa1.jpg",
+        image: "grandpha.jpeg",
         title: "తాతయ్యతో మధుర క్షణాలు ❤️",
         caption: "ఎప్పటికీ గుర్తుండిపోయే జ్ఞాపకం"
     },
     {
-        image: "assets/amma_mini/amma_mini1.jpg",
+        image: "amma with mini .jpeg",
         title: "అమ్మా నేను ❤️",
         caption: "మన ఇద్దరి అందమైన ప్రపంచం"
     },
     {
-        image: "assets/amma_mini/amma_mini2.jpg",
+        image: "big mini 3.jpeg",
         title: "నా బంగారు తల్లి ❤️",
         caption: "నీతో గడిపిన ప్రతి క్షణం ప్రత్యేకమే"
     },
     {
-        image: "assets/present/present1.jpg",
-        title: "మరచిపోలేని రోజులు ❤️",
-        caption: "మన జీవితంలోని అందమైన క్షణాలు"
-    },
-    {
-        image: "assets/present/present2.jpg",
+        image: "min1 smile.jpeg",
         title: "ఎప్పటికీ ఇలాగే నవ్వుతూ ఉండు ❤️",
         caption: "నీ సంతోషమే నా సంతోషం"
     },
     {
-        image: "assets/present/present3.jpg",
+        image: "mini 2 big.jpeg",
         title: "నా ప్రపంచం నువ్వే ❤️",
         caption: "ఇంకెన్నో జ్ఞాపకాలు మన కోసం"
     }
@@ -55,9 +50,21 @@ function showWelcome() {
             <button onclick="showGift()">Let's Start ❤️</button>
         </div>
     `;
+
+    app.style.backgroundImage = "url('welcome_background.png')";
+    app.style.backgroundSize = "cover";
+    app.style.backgroundPosition = "center";
+    app.style.backgroundRepeat = "no-repeat";
+    app.style.borderRadius = "24px";
+}
+
+function resetBackground() {
+    app.style.backgroundImage = "none";
 }
 
 function showGift() {
+    resetBackground();
+
     app.innerHTML = `
         <div class="gift-card">
             <div class="heart">🎁</div>
@@ -69,6 +76,8 @@ function showGift() {
 }
 
 function showSurprise() {
+    resetBackground();
+
     app.innerHTML = `
         <div class="surprise-card">
             <div class="heart">🥰</div>
@@ -81,22 +90,27 @@ function showSurprise() {
 }
 
 function showMemory(index) {
+    resetBackground();
     currentMemory = index;
+
     const memory = memories[currentMemory];
 
     app.innerHTML = `
         <div class="memory-card">
             <h1>Our Beautiful Memories ❤️</h1>
+
             <div class="memory-count">
                 Memory ${currentMemory + 1} of ${memories.length}
             </div>
 
             <div class="memory-frame">
-                <img src="${memory.image}"
-                     alt="${memory.title}"
-                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <img
+                    src="${memory.image}"
+                    alt="${memory.title}"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+                >
                 <div class="photo-placeholder" style="display:none;">
-                    <p>ఈ ఫోటో కనిపించడం లేదు ❤️</p>
+                    <p>Photo not found ❤️</p>
                     <p>${memory.image}</p>
                 </div>
             </div>
@@ -105,8 +119,10 @@ function showMemory(index) {
             <p>${memory.caption}</p>
 
             <div class="navigation-buttons">
-                <button onclick="previousMemory()"
-                    ${currentMemory === 0 ? "disabled" : ""}>
+                <button
+                    onclick="previousMemory()"
+                    ${currentMemory === 0 ? "disabled" : ""}
+                >
                     ← Previous
                 </button>
 
@@ -135,6 +151,8 @@ function nextMemory() {
 }
 
 function showBirthdayWish() {
+    resetBackground();
+
     app.innerHTML = `
         <div class="final-card">
             <div class="heart">🎂❤️</div>
@@ -147,6 +165,8 @@ function showBirthdayWish() {
 }
 
 function showLetter() {
+    resetBackground();
+
     app.innerHTML = `
         <div class="final-card">
             <div class="heart">💌</div>
@@ -154,20 +174,20 @@ function showLetter() {
 
             <div class="final-letter">
                 <p>
-                    నువ్వు నా జీవితంలోకి వచ్చిన రోజు నుంచి
-                    నా ప్రపంచం మరింత అందంగా మారింది.
+నువ్వు నా జీవితంలోకి వచ్చిన రోజు నుంచి
+నా ప్రపంచం మరింత అందంగా మారింది.
 
-                    నీ ప్రతి నవ్వు నాకు ఆనందం.
-                    నీ ప్రతి విజయం నాకు గర్వం.
+నీ ప్రతి నవ్వు నాకు ఆనందం.
+నీ ప్రతి విజయం నాకు గర్వం.
 
-                    జీవితంలో ఎన్ని కష్టాలు వచ్చినా
-                    ధైర్యంగా ముందుకు సాగాలి.
+జీవితంలో ఎన్ని కష్టాలు వచ్చినా
+ధైర్యంగా ముందుకు సాగాలి.
 
-                    నువ్వు ఎప్పుడూ సంతోషంగా ఉండాలి.
-                    నీ కలలన్నీ నిజం కావాలి.
+నువ్వు ఎప్పుడూ సంతోషంగా ఉండాలి.
+నీ కలలన్నీ నిజం కావాలి.
 
-                    నువ్వు నాకు ఎప్పటికీ నా చిన్న పాపవే.
-                    చాలా చాలా ప్రేమిస్తున్నాను తల్లీ! ❤️
+నువ్వు నాకు ఎప్పటికీ నా చిన్న పాపవే.
+చాలా చాలా ప్రేమిస్తున్నాను తల్లీ! ❤️
                 </p>
             </div>
 

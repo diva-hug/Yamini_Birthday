@@ -41,6 +41,7 @@ const memories = [
 
 let currentMemory = 0;
 
+// Welcome Page
 function showWelcome() {
     app.innerHTML = `
         <div class="welcome-card">
@@ -58,10 +59,12 @@ function showWelcome() {
     app.style.borderRadius = "24px";
 }
 
+// Remove welcome background
 function resetBackground() {
     app.style.backgroundImage = "none";
 }
 
+// Gift Page
 function showGift() {
     resetBackground();
 
@@ -75,6 +78,7 @@ function showGift() {
     `;
 }
 
+// Surprise Page
 function showSurprise() {
     resetBackground();
 
@@ -89,10 +93,11 @@ function showSurprise() {
     `;
 }
 
+// Memories Page
 function showMemory(index) {
     resetBackground();
-    currentMemory = index;
 
+    currentMemory = index;
     const memory = memories[currentMemory];
 
     app.innerHTML = `
@@ -109,6 +114,7 @@ function showMemory(index) {
                     alt="${memory.title}"
                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
                 >
+
                 <div class="photo-placeholder" style="display:none;">
                     <p>Photo not found ❤️</p>
                     <p>${memory.image}</p>
@@ -136,12 +142,14 @@ function showMemory(index) {
     `;
 }
 
+// Previous Memory
 function previousMemory() {
     if (currentMemory > 0) {
         showMemory(currentMemory - 1);
     }
 }
 
+// Next Memory
 function nextMemory() {
     if (currentMemory < memories.length - 1) {
         showMemory(currentMemory + 1);
@@ -150,6 +158,7 @@ function nextMemory() {
     }
 }
 
+// Birthday Wish Page
 function showBirthdayWish() {
     resetBackground();
 
@@ -157,13 +166,25 @@ function showBirthdayWish() {
         <div class="final-card">
             <div class="heart">🎂❤️</div>
             <h1>Happy Birthday, Mini! ❤️</h1>
-            <p>నీ జీవితం ఎప్పుడూ ఆనందం, ప్రేమ, విజయాలతో నిండిపోవాలి.</p>
-            <p>ఎప్పుడూ ఇలాగే నవ్వుతూ సంతోషంగా ఉండు నా బంగారు తల్లి!</p>
-            <button onclick="showLetter()">One Last Surprise ❤️</button>
+
+            <p>
+                నీ జీవితం ఎప్పుడూ ఆనందం,
+                ప్రేమ, విజయాలతో నిండిపోవాలి.
+            </p>
+
+            <p>
+                ఎప్పుడూ ఇలాగే నవ్వుతూ
+                సంతోషంగా ఉండు నా బంగారు తల్లి!
+            </p>
+
+            <button onclick="showLetter()">
+                One Last Surprise ❤️
+            </button>
         </div>
     `;
 }
 
+// Final Letter From Amma
 function showLetter() {
     resetBackground();
 
@@ -196,4 +217,5 @@ function showLetter() {
     `;
 }
 
+// Start Website
 showWelcome();
